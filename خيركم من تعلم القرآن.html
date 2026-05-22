@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البرنامج الصيفي لتحفيظ القرآن الكريم - روضة الزهراء بالمنصورية</title>
+    <!-- خطوط جوجل العصرية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1b4d3e;       /* أخضر زمردي راقٍ */
+            --primary-light: #2c6b56; /* أخضر فاتح */
+            --accent: #c5a880;        /* ذهبي دافئ */
+            --accent-hover: #b3946b;  /* ذهبي غامق */
+            --bg-gradient: linear-gradient(135deg, #f4f7f5 0%, #e6eee9 100%);
+            --card-bg: #ffffff;
+            --text-main: #2b3a33;
+            --text-muted: #6b7c74;
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(27, 77, 62, 0.07);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(197, 168, 128, 0.2);
+        }
+
+        /* رأس الصفحة - الهوية البصرية */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #0f3026 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* زخرفة إسلامية خفيفة في الخلفية */
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.05;
+            background-image: radial-gradient(circle at 50% 50%, var(--accent) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .header .institution-name {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header .logo-icon {
+            font-size: 3.2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .header h1 {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            color: #d1dfda;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(197, 168, 128, 0.2);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        /* قسم مميزات البرنامج */
+        .features-container {
+            background: #fafbfa;
+            padding: 30px 40px;
+            border-bottom: 1px solid #eef3f0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .feature-item {
+            padding: 15px 10px;
+            border-radius: 10px;
+            background: #fff;
+            border: 1px solid #e6eee9;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .feature-item i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .feature-item h4 {
+            font-size: 1rem;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        /* الاستمارة */
+        .form-wrapper {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eef3f0;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -2px; right: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        @media (max-width: 650px) {
+            .grid-2, .features-container {
+                grid-template-columns: 1fr;
+            }
+            .features-container {
+                padding: 20px;
+            }
+            .form-wrapper {
+                padding: 25px 20px;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            right: 15px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 45px 14px 15px;
+            border: 1.5px solid #dbe3df;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--text-main);
+            background-color: #fafbfa;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(27, 77, 62, 0.08);
+        }
+
+        .form-control:focus + i {
+            color: var(--primary);
+        }
+
+        select.form-control {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        /* زر الإرسال */
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(27, 77, 62, 0.15);
+            margin-top: 15px;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(27, 77, 62, 0.2);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* واجهة نجاح التسجيل المنبثقة */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 48, 38, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            transform: scale(0.8);
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        .modal-content h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .btn-close {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-close:hover {
+            background: var(--accent-hover);
+        }
+
+        /* التنبيهات خطأ العمر */
+        .error-msg {
+            color: #d32f2f;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- رأس الصفحة -->
+        <div class="header">
+            <div class="institution-name">روضة الزهراء بالمنصورية</div>
+            <div class="logo-icon">
+                <i class="fa-solid fa-book-quran"></i>
+            </div>
+            <h1>البرنامج الصيفي لـتحفيظ القرآن الكريم</h1>
+            <p>رحلة نورانية مباركة لأطفالنا بالتجويد والإتقان</p>
+            <div class="badge">
+                <i class="fa-solid fa-child"></i> للأطفال ابتداءً من عمر 6 سنوات
+            </div>
+        </div>
+
+        <!-- أركان ومميزات البرنامج الصيفي المضافة حديثاً -->
+        <div class="features-container">
+            <div class="feature-item">
+                <i class="fa-solid fa-star-and-crecent"></i>
+                <h4>حفظ القرآن الكريم</h4>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-volume-high"></i>
+                <h4>تعليم أحكام التجويد</h4>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-mosque"></i>
+                <h4>دروس في السيرة والفقه</h4>
+            </div>
+        </div>
+
+        <!-- استمارة التسجيل -->
+        <form id="registrationForm" class="form-wrapper" onsubmit="handleRegistration(event)">
+            
+            <!-- قسم بيانات الطفل -->
+            <div class="section-title">بيانات الطفل المشترك</div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="childName">اسم الطفل الثنائي</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="childName" class="form-control" placeholder="أدخل اسم الطفل" required>
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="childAge">عمر الطفل (بالسنوات)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="childAge" class="form-control" min="1" max="18" placeholder="مثال: 8" required>
+                        <i class="fa-solid fa-calendar-day"></i>
+                    </div>
+                    <div id="ageError" class="error-msg"><i class="fa-solid fa-circle-exclamation"></i> عذراً، هذا البرنامج مخصص للأطفال من عمر 6 سنوات فما فوق.</div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="gender">الجنس</label>
+                    <div class="input-wrapper">
+                        <select id="gender" class="form-control" required>
+                            <option value="" disabled selected>اختر الجنس</option>
+                            <option value="male">ذكر</option>
+                            <option value="female">أنثى</option>
+                        </select>
+                        <i class="fa-solid fa-venus-mars"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="quranLevel">المستوى الحالي في الحفظ</label>
+                    <div class="input-wrapper">
+                        <select id="quranLevel" class="form-control" required>
+                            <option value="" disabled selected>حدد مستوى الطفل</option>
+                            <option value="0">مبتدئ (لا يحفظ أو يحفظ قصار السور)</option>
+                            <option value="1">يحفظ جزء عمّ</option>
+                            <option value="2">يحفظ جزأين إلى 5 أجزاء</option>
+                            <option value="3">يحفظ أكثر من 5 أجزاء</option>
+                        </select>
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم بيانات ولي الأمر -->
+            <div class="section-title">بيانات ولي الأمر</div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="parentName">اسم ولي الأمر</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="parentName" class="form-control" placeholder="أدخل الاسم الكامل" required>
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="parentPhone">رقم الجوال (واتساب)</label>
+                    <div class="input-wrapper">
+                        <input type="tel" id="parentPhone" class="form-control" placeholder="05xxxxxxxx" required>
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="notes">ملاحظات إضافية أو صحية (إن وجدت)</label>
+                <div class="input-wrapper">
+                    <textarea id="notes" class="form-control" rows="3" placeholder="أي معلومات تود إطلاع إدارة البرنامج عليها..."></textarea>
+                    <i class="fa-solid fa-comment-dots" style="top: 18px;"></i>
+                </div>
+            </div>
+
+            <!-- زر الإرسال -->
+            <button type="submit" class="btn-submit">
+                <i class="fa-solid fa-paper-plane"></i> تأكيد التسجيل الان
+            </button>
+        </form>
+    </div>
+
+    <!-- نافذة النجاح المنبثقة -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>تم استلام طلبكم بنجاح!</h3>
+            <p>نشكركم على ثقتكم الغالية في <strong>روضة الزهراء</strong>. تم تسجيل طفلكم في البرنامج الصيفي، وسيتواصل معكم مشرف الحلقة عبر الواتساب لتحديد موعد اختبار تحديد المستوى الإثرائي قريباً جداً.</p>
+            <button class="btn-close" onclick="closeModal()">حسناً</button>
+        </div>
+    </div>
+
+    <!-- كود الجافا سكريبت الذكي -->
+    <script>
+        function handleRegistration(event) {
+            event.preventDefault(); 
+
+            const ageInput = document.getElementById('childAge').value;
+            const ageError = document.getElementById('ageError');
+            const modal = document.getElementById('successModal');
+
+            // التحقق من شرط السن (ابتداء من 6 سنوات)
+            if (parseInt(ageInput) < 6) {
+                ageError.style.display = 'block';
+                document.getElementById('childAge').focus();
+                return false;
+            } else {
+                ageError.style.display = 'none';
+            }
+
+            // تجميع البيانات
+            const formData = {
+                childName: document.getElementById('childName').value,
+                childAge: ageInput,
+                gender: document.getElementById('gender').value,
+                quranLevel: document.getElementById('quranLevel').value,
+                parentName: document.getElementById('parentName').value,
+                parentPhone: document.getElementById('parentPhone').value,
+                notes: document.getElementById('notes').value
+            };
+
+            console.log("بيانات التسجيل المجمعة:", formData);
+
+            // إظهار نافذة النجاح
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('active');
+            
+            // إعادة تعيين الحقول بعد إغلاق النافذة
+            document.getElementById('registrationForm').reset();
+        }
+
+        // إخفاء رسالة الخطأ بمجرد قيام المستخدم بتعديل العمر
+        document.getElementById('childAge').addEventListener('input', function() {
+            if (this.value >= 6) {
+                document.getElementById('ageError').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
